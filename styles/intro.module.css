@@ -1,0 +1,25 @@
+.main {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  background-color: gray;
+  animation-name: sizeUp;
+  animation-duration: 1s;
+  border-radius: 100%;
+  animation-fill-mode: forwards;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@-webkit-keyframes sizeUp {
+  0% {
+    width: 100px;
+    height: 100px;
+  }
+  100% {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0px;
+  }
+}
