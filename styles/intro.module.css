@@ -2,7 +2,7 @@
   width: 100px;
   height: 100px;
   position: fixed;
-  background-color: gray;
+  background-color: #fff;
   animation-name: sizeUp;
   animation-duration: 1s;
   border-radius: 100%;
