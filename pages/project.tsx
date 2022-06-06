@@ -352,6 +352,10 @@ export const ProjectDummy = [
             "Javascript ES6",
             "CSS3 – CSS Modules",
             "HTML-5",
+            "Jsoup",
+            "Java Thread Pool",
+            "Ajax",
+            "Bootstrap",
         ],
         depscription: () => (
             <>
@@ -371,12 +375,16 @@ export const ProjectDummy = [
                 <p>
                     백엔드의 경우 MVC2 패턴을 사용하여 클라이언트의
                     요청,응답처리 및 비즈니스 로직 처리부분을 모듈화 하여
-                    유지보수 및 확장성에 용이하게 작업을 진행하였습니다.
+                    유지보수 및 확장성에 용이하게 작업을 진행하였습니다. 공공
+                    빅데이터에서 국내 항공 정보 API를 이용해 실제 항공 정보를
+                    기반으로 예매가 가능하도록 작업 하였습니다. 해당 API에서
+                    국외데이터가 나오지 않아 항공정보포털시스템 사이트 크롤링을
+                    통해 국외 정보도 지원 하였습니다.
                 </p>
                 <br />
                 <p>
                     소스 관리 부분에선 Git을 사용 하여 관리하였으며, 당시엔
-                    Git사용에 미숙함이 있어 각자의 Branch에서 작업을
+                    Git사용에 익숙하지 않아 각자의 Branch에서 작업을
                     진행하였습니다. 작업 완료 후 Main Branch에는 제가 직접
                     병합하는 식으로 작업을 진행했습니다.
                 </p>
@@ -393,7 +401,7 @@ export const ProjectDummy = [
         content: "항공 예매 서비스를 구현했습니다.",
         worker: "",
         type: "team",
-        skill: "",
+        skill: [],
         depscription: () => (
             <>
                 <p>
@@ -434,7 +442,7 @@ export const ProjectDummy = [
         content: "항공 예매 서비스를 구현했습니다.",
         worker: "",
         type: "team",
-        skill: "",
+        skill: [],
         depscription: () => (
             <>
                 <p>
@@ -479,7 +487,7 @@ export const ProjectDummy = [
         content: "항공 예매 서비스를 구현했습니다.",
         worker: "",
         type: "team",
-        skill: "",
+        skill: [],
         depscription: () => (
             <>
                 <p>
@@ -527,7 +535,7 @@ export const ProjectDummy = [
         content: "항공 예매 서비스를 구현했습니다.",
         worker: "",
         type: "team",
-        skill: "",
+        skill: [],
         depscription: () => (
             <>
                 <p>

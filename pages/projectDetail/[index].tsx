@@ -32,10 +32,11 @@ const ProjectDetail = () => {
             <h2>Technologies</h2>
             <p>프로젝트를 진행하면서 참여한 코드 기술 및 기술</p>
             <ul>
-                {/* {project.skill} 
-                <li>
-                    <p></p>
-                </li> */}
+                {project.skill.map((v, i) => (
+                    <li key={i}>
+                        <p>{v}</p>
+                    </li>
+                ))}
             </ul>
         </Container>
     );
