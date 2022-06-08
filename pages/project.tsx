@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useCallback, useLayoutEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 
 const Main = styled.div`
@@ -213,7 +213,7 @@ const project = () => {
     [router]
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (selectTagList.length === 0) {
       setSelectTagList(["SHOW ALL"]);
     }
@@ -255,11 +255,7 @@ const project = () => {
                 </div>
                 <div className="projectImg">
                   <Image
-                    src={
-                      v.thumbnail.length
-                        ? v.thumbnail
-                        : require("../src/assets/image/willpass/슬라이드1.png")
-                    }
+                    src={v.thumbnail}
                     alt="projectThumbnail"
                     layout="intrinsic"
                   />
@@ -338,7 +334,7 @@ export const ProjectDummy = [
       require("../src/assets/image/willpass/슬라이드50.png"),
     ],
     git: "",
-    thumbnail: require("../src/assets/image/willpass/슬라이드1.png"),
+    thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
     content:
       "WILL PASS는 실제 여행사 처럼 예매가 가능하도록 만든 가상의 웹사이트 입니다. MVC2 패턴을 적용하여 진행 하였으며, 주요 기능으론 회원 CRUD, 실제 항공편 기준 예매 서비스, 문의 게시판, 실시간 채팅 고객센터가 있습니다.",
     worker: "",
@@ -391,7 +387,7 @@ export const ProjectDummy = [
     date: "2021-09 ~ 2021-10",
     img: [],
     git: "",
-    thumbnail: "",
+    thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
     content:
       "실제 서비스 중인 다이닝코드 리뉴얼 프로젝트에 참여했습니다. 제가 맡은 부분은 회원가입,로그인,피드 페이지 였습니다. 반응형 웹페이지 퍼블을 맡았으며 API 작업전 UI 부분 작업을 진행 하였습니다.",
     worker: "",
@@ -430,7 +426,7 @@ export const ProjectDummy = [
     date: "2021-10 ~ 2021-11",
     img: [],
     git: "",
-    thumbnail: "",
+    thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
     content:
       "아파트 사전 입주 어플로 입주 예약, 불만 사항 접수 기능이 존재하는 앱입니다. 프론트엔드를 맡았고 React-Native를 사용하여 IOS,ANDROID 두 플랫폼을 지원했습니다. 파이어베이스 다이나믹 링크를 통해 앱이 켜지도록 설정하였고, 푸시 알람, 알림 톡을 통해 고객 편의,친화적인 앱을 만들었습니다.",
     worker: "",
@@ -472,7 +468,7 @@ export const ProjectDummy = [
     date: "2020-06 ~ 2020-08",
     img: [],
     git: "",
-    thumbnail: "",
+    thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
     content: "항공 예매 서비스를 구현했습니다.",
     worker: "",
     type: "team",
@@ -517,7 +513,7 @@ export const ProjectDummy = [
     date: "2020-06 ~ 2020-08",
     img: [],
     git: "",
-    thumbnail: "",
+    thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
     content: "항공 예매 서비스를 구현했습니다.",
     worker: "",
     type: "team",
