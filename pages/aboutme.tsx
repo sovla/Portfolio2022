@@ -4,10 +4,12 @@ import styled from "styled-components";
 const Container = styled.div`
     width: 100vw;
     background-color: #414242;
-    padding: 100px 10%;
+    padding: 100px 15%;
     min-height: 100vh;
     display: flex;
     flex-direction: row;
+    overflow-x: hidden;
+    justify-content: space-between;
     h1,
     h2 {
         margin-bottom: 20px;
@@ -17,17 +19,16 @@ const Container = styled.div`
         margin-bottom: 15px;
     }
     .career {
+        flex: 0.27;
     }
     .project {
         flex: 0.3;
     }
     .mind {
+        flex: 0.33;
         p {
             line-height: 2;
         }
-    }
-    div {
-        flex: 0.3;
     }
 `;
 
