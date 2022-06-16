@@ -20,10 +20,15 @@ const ProjectDetail = () => {
         <Container>
             <h1>{project.name}</h1>
             <p>{project.content}</p>
-            <Carousel autoPlay emulateTouch infiniteLoop>
+            <Carousel autoPlay emulateTouch infiniteLoop stopOnHover>
                 {project.img.map((v, i) => (
-                    <div key={i}>
-                        <Image src={v} alt="ProjectImage" />
+                    <div className="renderItem" key={i}>
+                        <Image
+                            objectFit="contain"
+                            src={v}
+                            alt="ProjectImage"
+                            layout="responsive"
+                        />
                     </div>
                 ))}
             </Carousel>
@@ -56,6 +61,14 @@ const Container = styled.div`
     }
     & > p {
         margin-bottom: 20px;
+    }
+    .renderItem {
+        width: "100%";
+        max-height: 600px;
+        position: "relative";
+        & * {
+            max-height: 600px;
+        }
     }
 `;
 export default ProjectDetail;

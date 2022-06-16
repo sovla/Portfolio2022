@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Menu from "../src/components/layout/Menu";
 
 const Container = styled.div`
     width: 100vw;
@@ -35,6 +36,7 @@ const Container = styled.div`
 const AboutMe = () => {
     return (
         <Container>
+            <Menu />
             <div className="career">
                 <h1>KIM JUNHAN</h1>
                 <p>프론트엔드 개발자 김준한 입니다.</p>
