@@ -225,6 +225,7 @@ const project = () => {
             setSelectTagList(["SHOW ALL"]);
         }
     }, [selectTagList]);
+    const reverseProjectDummy = [...ProjectDummy].reverse();
 
     return (
         <Main>
@@ -245,7 +246,7 @@ const project = () => {
                     ))}
                 </Tag>
                 <ProjectDiv>
-                    {ProjectDummy.map((v, i) => {
+                    {reverseProjectDummy.map((v, i) => {
                         if (
                             !selectTagList.find((findValue) =>
                                 v.tag.includes(findValue)
@@ -445,7 +446,7 @@ export const ProjectDummy = [
     },
     {
         tag: ["REACT-JS", "RECOIL", "REACT-NATIVE", "FCM", "Dynamic-Link"],
-        name: "AEGAIN",
+        name: "AEGAIN-A플래너",
         date: "2021-10 ~ 2021-11",
         img: [
             require("../src/assets/image/aegain/complain.png"),
@@ -484,6 +485,7 @@ export const ProjectDummy = [
                 <p>
                     1.FireBase Cloud Message를 통해 알림 메시지 및 데이터 메시지
                     기능을 추가하여 다양한 메시지 타겟팅 기능을 지원했습니다.
+                    <br />
                     2.해당 앱의 경우 QR코드를 통해 접근하는 폐쇠적인
                     앱이였습니다. 이 기능을 지원하기 위해 FireBase DynamicLink
                     를 통해 앱에 접근할 수 있도록 하였으며, 링크의 파라미터를

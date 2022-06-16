@@ -2,29 +2,101 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import Menu from "../src/components/layout/Menu";
 import styles from "../styles/Home.module.css";
 
+const boxSize = keyframes`
+    0%{
+        height:50vh ;
+    }
+    25%{
+        height:25vh;
+    }
+    100%{
+        height:0vh;
+    }
+`;
+const boxFade = keyframes`
+    0%{
+        opacity:0.2 ;
+    }
+    25%{
+        opacity:1 ;
+    }
+    100%{
+        opacity:0 ;
+    }
+`;
+const box = keyframes`
+    0%{
+        transform:rotate(15deg) ;
+    }
+    25%{
+        transform:rotate(8deg) ;
+    }
+    100%{
+        transform:rotate(0deg) ;
+    }
+`;
+
+const Container = styled.div`
+    .main {
+        width: 100vw;
+        height: 100vh;
+        background-color: #414242;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+        .top_black {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #000;
+            width: 100%;
+            height: 50vh;
+            z-index: 100;
+            animation: ${boxSize} 7s forwards;
+        }
+        .bottom_black {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: #000;
+            width: 100%;
+            height: 50vh;
+            z-index: 100;
+            animation: ${boxSize} 7s forwards;
+        }
+        .main_text {
+            animation: ${boxFade} 7s forwards;
+            z-index: 10;
+        }
+        video {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: fill;
+            animation: ${box} 7s forwards;
+        }
+    }
+`;
+
 const Home: NextPage = () => {
     const router = useRouter();
-    const [count, setCount] = useState(0);
-
+    const ref = useRef<HTMLVideoElement>(null);
     useEffect(() => {
-        setInterval(() => {
-            setCount((prev) => prev + 1);
-        }, 100);
+        setTimeout(() => {
+            router.push("./aboutme");
+        }, 4000);
     }, []);
-
-    const mainText = "안녕하세요. 개발자 김준한 입니다.";
-    const subText = "저는 프론트 개발자이고 리액트를 가장 좋아합니다.";
-
-    useEffect(() => {
-        fetch("./api/hello", {}).then((res) => console.log(res));
-    }, []);
-
     return (
-        <div className={styles.container}>
+        <Container>
             <Menu />
             <Head>
                 <title></title>
@@ -39,13 +111,17 @@ const Home: NextPage = () => {
                     type="text/css"
                 />
             </Head>
-            <div className={styles.main}>
-                <h2 className={styles.mainText}>{mainText.slice(0, count)}</h2>
-                <p className={styles.mainText}>
-                    {count > 23 && subText.slice(0, count - 23)}
-                </p>
+            <div className="main">
+                <div className="top_black"></div>
+                <div className="main_text">
+                    <h2>열정적인 개발자 김준한 입니다.</h2>
+                </div>
+                <div className="bottom_black"></div>
+                <video autoPlay ref={ref} muted loop>
+                    <source src="/intro/intro.mp4" type="video/mp4" />
+                </video>
             </div>
-        </div>
+        </Container>
     );
 };
 
