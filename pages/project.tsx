@@ -106,6 +106,9 @@ const ProjectDiv = styled.div`
         margin-top: 60px;
         box-shadow: 8px 8px 0 rgb(0 0 0 / 15%);
         min-height: 400px;
+        & :hover {
+            cursor: pointer;
+        }
         .projectText {
             display: flex;
             flex-direction: row;
@@ -161,7 +164,7 @@ const ProjectDiv = styled.div`
                 width: fit-content;
                 color: #999;
                 font-family: MontSerrat, Tahoma, Arial, sans-serif;
-                transition: 1.5s ease-in-out;
+                transition: 1s ease-in-out;
             }
         }
     }
@@ -259,7 +262,11 @@ const project = () => {
                             <div
                                 key={v.name}
                                 className="projectItem"
-                                onClick={() => onClickProjectItem(i)}
+                                onClick={() =>
+                                    onClickProjectItem(
+                                        reverseProjectDummy.length - 1 - i
+                                    )
+                                }
                             >
                                 <div className="projectText">
                                     <h1>{v.name}</h1>
@@ -267,9 +274,9 @@ const project = () => {
                                 <div className="projectImg">
                                     <Image
                                         style={{
-                                            objectFit: "cover",
                                             maxHeight: "360px",
                                         }}
+                                        objectFit="cover"
                                         src={v.thumbnail}
                                         alt="projectThumbnail"
                                         layout="fill"
@@ -413,7 +420,7 @@ export const ProjectDummy = [
         date: "2021-09 ~ 2021-10",
         img: [],
         git: "",
-        thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
+        thumbnail: require("../src/assets/image/diningcode/thumbnail.png"),
         content:
             "실제 서비스 중인 다이닝코드 리뉴얼 프로젝트에 참여했습니다. 제가 맡은 부분은 회원가입,로그인,피드 페이지 였습니다. 반응형 웹페이지 퍼블을 맡았으며 API 작업전 UI 부분 작업을 진행 하였습니다.",
         worker: "",
@@ -421,26 +428,76 @@ export const ProjectDummy = [
         skill: [],
         depscription: () => (
             <>
-                <p>API</p>
-                <br />
+                <h2>입사후 첫 프로젝트</h2>
                 <p>
-                    프론트엔드 빠른 개발을 위해 부트스트랩 프레임 워크를
-                    이용하였으며, 에어 부산의 디자인을 벤치마킹하여 깔끔한
-                    디자인으로 작업하였습니다.
+                    Next.js TypeScript를 처음 접한 상태로 프로젝트에 임하게
+                    되었습니다. 팀원들에게 폐를 끼치지 않기 위해 퇴근후,출근전
+                    공부를 하며 저의 부족한점을 채웠습니다. 나중에는 Next에서
+                    Modal을 공통적으로 만들고 제어하는 방법등 오히려 제가
+                    팀원들에게 이런 방향으로 하는게 좋지 않을까요? 질문을 하는등
+                    배울 점 있는 팀원이 되었습니다.
                 </p>
                 <br />
+                <h2>Next.js</h2>
                 <p>
-                    백엔드의 경우 MVC2 패턴을 사용하여 클라이언트의
-                    요청,응답처리 및 비즈니스 로직 처리부분을 모듈화 하여
-                    유지보수 및 확장성에 용이하게 작업을 진행하였습니다.
+                    검색엔진 최적화(SEO)를 위해 적용된 기술입니다. 다이닝코드는
+                    맛집 웹 사이트로써 다른 사이트보다 SEO에 중요도를 높게
+                    봐야했습니다. 기존 React의 경우 SPA로써 SEO 가 어려웠던 반면
+                    Next의 경우 Head 컴포넌트를 따로 지원해줘 각 페이지마다 SEO
+                    적용이 쉬웠습니다.
                 </p>
                 <br />
+                <h2>협업, 스토리북</h2>
                 <p>
-                    소스 관리 부분에선 Git을 사용 하여 관리하였으며, 당시엔
-                    Git사용에 미숙함이 있어 각자의 Branch에서 작업을
-                    진행하였습니다. 작업 완료 후 Main Branch에는 제가 직접
-                    병합하는 식으로 작업을 진행했습니다.
+                    협업을 하면서 어려웠던 점이 여러가지 있엇습니다.
+                    <br />
+                    1. 작업을 진행하면서 컴포넌트는 늘어나는데 자신이 만든
+                    컴포넌트 외에는 알 수 있는 부분이 없었습니다.
+                    <br />
+                    2. UI 작업시 데스크탑 웹, 모바일 웹 두번 확인을 거쳐야 해서
+                    테스팅 시간이 두배로 들어 생산성이 떨어졌습니다.
+                    <br />
+                    <p>
+                        위 문제를 해결 하기 위해 프로젝트 진행중 부득이하게
+                        컴포넌트 설계부터 다시하게 되었습니다. 스토리북을 통해
+                        컴포넌트를 직관적으로 볼 수 있도록 하였으며, 스토리북을
+                        효율적으로 사용하기 위해 컴포넌트 설계시 아토믹 컴포넌트
+                        패턴 즉 작은 버튼부터 하나씩 조립하는 형태로 진행하여
+                        코드 생산성을 높인 경험이 있습니다.
+                    </p>
                 </p>
+                <br />
+            </>
+        ),
+    },
+    {
+        tag: [
+            "REACT-JS",
+            "NEXT-JS",
+            "TYPESCRIPT",
+            "RECOIL",
+            "Styled-Components",
+            "Node.js",
+            "Koa",
+            "TEAM-PROJECT",
+        ],
+        name: "3SixTeen Copy",
+        date: "2021-10 ~ 2021-11",
+        img: [],
+        git: "",
+        thumbnail: require("../src/assets/image/3sixteen/thumbnail.png"),
+        content:
+            "업무 시간외에 프론트 공부를 위해 참여한 프로젝트 입니다. 3SixTeen 홈페이지를 벤치마킹 하여 해당 사이트를 구현하였으며 Node.js 를 이용해 백엔드를 구현 해보았습니다.",
+        worker: "",
+        type: "team",
+        skill: [],
+        depscription: () => (
+            <>
+                <h2>사이드 프로젝트</h2>
+                <p>Next.js,TypeScript 공부 및 협업시</p>
+                <br />
+
+                <br />
             </>
         ),
     },
@@ -514,7 +571,7 @@ export const ProjectDummy = [
         date: "2021-11 ~ 2020-04",
         img: [],
         git: "",
-        thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
+        thumbnail: require("../src/assets/image/pedalcheck/splash.png"),
         content:
             "자전거 정비 및 정비샵 업데이트가 가능한 앱입니다.프론트 엔드 2, 백엔드 1명으로 팀 프로젝트를 진행하였습니다. 프론트에서 전체적인 틀 작업은 제가 진행하였고 팀원과 분업하여 프로젝트 진행을 이끌었습니다.",
         worker: "",
@@ -573,42 +630,43 @@ export const ProjectDummy = [
             "GOOGLE-MAPS-API",
             "REDUX-TOOLKIT",
             "FCM",
+            "Send-Bird",
         ],
         name: "BRAZIL LOCAL APP",
         date: "2020-06 ~ 2020-08",
         img: [],
         git: "",
-        thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
+        thumbnail: require("../src/assets/image/localapp/splash.png"),
         content: "브라질 현지 중고 거래 서비스 앱을 만들었습니다. ",
         worker: "",
         type: "team",
         skill: [],
         depscription: () => (
             <>
+                <h2>Google Maps API</h2>
                 <p>
-                    5명의 팀원과 같이 협업을 하며 팀 프로젝트를 진행하는 부분에
-                    대해 많이 배울 수 있엇습니다. 프로젝트 진행 방식에 대해 많은
-                    것을 배웠고,어려운 부분이 있으면 소통을 하며 학습할 수
-                    있엇습니다.
+                    해당 API를 이용해 현재 위치 및 위치별 주소 나타내기, 위치
+                    자동 검색 지원, 지도에서 위치 선택하기 기능을 구현했습니다.
+                    구글 맵 개발자 공식 문서를 통해 필요한 API를 선택했으며,
+                    디바운스를 통해 API를 호출 횟수를 줄여 사용자 경험을 상향
+                    시켰습니다.
                 </p>
                 <br />
+                <h2>채팅</h2>
                 <p>
-                    프론트엔드 빠른 개발을 위해 부트스트랩 프레임 워크를
-                    이용하였으며, 에어 부산의 디자인을 벤치마킹하여 깔끔한
-                    디자인으로 작업하였습니다.
+                    SendBird 라이브러리를 이용해 채팅을 구현했으며 사진공유,
+                    위치공유, 검색어 찾기 기능을 넣어 카카오톡과 유사하도록
+                    구현했습니다.
                 </p>
                 <br />
+                <h2>TypeScript , Custom Hook</h2>
                 <p>
-                    백엔드의 경우 MVC2 패턴을 사용하여 클라이언트의
-                    요청,응답처리 및 비즈니스 로직 처리부분을 모듈화 하여
-                    유지보수 및 확장성에 용이하게 작업을 진행하였습니다.
-                </p>
-                <br />
-                <p>
-                    소스 관리 부분에선 Git을 사용 하여 관리하였으며, 당시엔
-                    Git사용에 미숙함이 있어 각자의 Branch에서 작업을
-                    진행하였습니다. 작업 완료 후 Main Branch에는 제가 직접
-                    병합하는 식으로 작업을 진행했습니다.
+                    TypeScript를 통해 Screen 이동시 필수 파라미터 값을 지정 해둬
+                    해당 페이지에 파라미터가 없을 경우 에러가 뜨도록
+                    구현했습니다. 커스텀 훅을 통해 공통적인 기능을 작성 했으며
+                    API 호출시 로딩 등 공통적인 상태를 관리하도록 하였으며,
+                    타입스크립트를 통해 어떠한 데이터를 넣어줘야 하며 어떤
+                    형태로 데이터가 리턴 되는지 타입을 지정했습니다.
                 </p>
             </>
         ),

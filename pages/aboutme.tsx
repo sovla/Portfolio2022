@@ -1,7 +1,16 @@
 import Image from "next/image";
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Menu from "../src/components/layout/Menu";
+
+const boxFade = keyframes`
+    0%{
+        opacity:0.2 ;
+    }
+    100%{
+        opacity:1 ;
+    }
+`;
 
 const Container = styled.div`
     width: 100vw;
@@ -12,6 +21,12 @@ const Container = styled.div`
     flex-direction: row;
     overflow-x: hidden;
     justify-content: space-between;
+    h1,
+    h2,
+    h3,
+    p {
+        animation: ${boxFade} 2s;
+    }
     h1,
     h2 {
         margin-bottom: 20px;

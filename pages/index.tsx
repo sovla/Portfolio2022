@@ -21,15 +21,18 @@ const boxSize = keyframes`
 const boxFade = keyframes`
     0%{
         opacity:0.2 ;
+        transform:translate3d(0,-50%,0) ;
     }
     25%{
         opacity:1 ;
+        transform:translate3d(0,0%,0) ;
     }
     100%{
         opacity:0 ;
+        transform:translate3d(0,-50%,0) ;
     }
 `;
-const box = keyframes`
+const boxShake = keyframes`
     0%{
         transform:rotate(15deg) ;
     }
@@ -82,7 +85,7 @@ const Container = styled.div`
             width: 100vw;
             height: 100vh;
             object-fit: fill;
-            animation: ${box} 7s forwards;
+            animation: ${boxShake} 7s forwards;
         }
     }
 `;
@@ -93,7 +96,7 @@ const Home: NextPage = () => {
     useEffect(() => {
         setTimeout(() => {
             router.push("./aboutme");
-        }, 4000);
+        }, 3000);
     }, []);
     return (
         <Container>
