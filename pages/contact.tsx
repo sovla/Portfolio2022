@@ -12,6 +12,9 @@ const Container = styled.div`
     flex-direction: column;
     .header {
         margin-bottom: 50px;
+        h1 {
+            font-size: 36px;
+        }
     }
 `;
 
@@ -32,12 +35,13 @@ const BoxDiv = styled.div`
             border: none;
             border-bottom: 2px solid #999;
             color: #fff;
+            font-size: 20px;
             &::placeholder {
                 color: #999;
             }
         }
         & > textarea {
-            width: 300px;
+            width: 400px;
             height: 200px;
         }
         & > button {
@@ -48,8 +52,13 @@ const BoxDiv = styled.div`
         }
     }
     & > div {
+        width: 400px;
+        h3 {
+            font-size: 28px;
+        }
         p {
             margin-bottom: 30px;
+            font-size: 16px;
         }
     }
 `;

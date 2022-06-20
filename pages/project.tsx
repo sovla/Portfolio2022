@@ -106,6 +106,13 @@ const ProjectDiv = styled.div`
         margin-top: 60px;
         box-shadow: 8px 8px 0 rgb(0 0 0 / 15%);
         min-height: 400px;
+        @media (max-width: 1200px) {
+            width: 100%;
+        }
+        @media (max-width: 425px) {
+            min-height: 200px;
+        }
+
         & :hover {
             cursor: pointer;
         }
@@ -177,6 +184,9 @@ const ProjectDiv = styled.div`
     }
     & > .projectItem:nth-child(2n) {
         margin-left: 5%;
+        @media (max-width: 1200px) {
+            margin-left: 0px;
+        }
     }
 `;
 
@@ -205,7 +215,10 @@ const project = () => {
                 return;
             }
             if (selectTagList.includes(value)) {
-                setSelectTagList((prev) => prev.filter((v) => v !== value));
+                setSelectTagList((prev) => {
+                    const filter = prev.filter((v) => v !== value);
+                    return filter.length === 0 ? ["SHOW ALL"] : filter;
+                });
             } else {
                 setSelectTagList((prev) => [
                     ...prev.filter((v) => v !== "SHOW ALL"),

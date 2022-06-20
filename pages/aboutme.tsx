@@ -21,6 +21,9 @@ const Container = styled.div`
     flex-direction: row;
     overflow-x: hidden;
     justify-content: space-between;
+    @media (max-width: 1200px) {
+        flex-direction: column;
+    }
     h1,
     h2,
     h3,
