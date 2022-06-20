@@ -236,11 +236,6 @@ const project = () => {
         [router]
     );
 
-    useEffect(() => {
-        if (selectTagList.length === 0) {
-            setSelectTagList(["SHOW ALL"]);
-        }
-    }, [selectTagList]);
     const reverseProjectDummy = [...ProjectDummy].reverse();
 
     return (
@@ -388,6 +383,7 @@ export const ProjectDummy = [
         ],
         depscription: () => (
             <>
+                <h2>팀 프로젝트</h2>
                 <p>
                     5명의 팀원과 같이 협업을 하며 팀 프로젝트를 진행하는 부분에
                     대해 많이 배울 수 있엇습니다. 프로젝트 진행 방식에 대해 많은
@@ -395,12 +391,14 @@ export const ProjectDummy = [
                     있엇습니다.
                 </p>
                 <br />
+                <h2>프론트엔드</h2>
                 <p>
                     프론트엔드 빠른 개발을 위해 부트스트랩 프레임 워크를
                     이용하였으며, 에어 부산의 디자인을 벤치마킹하여 깔끔한
                     디자인으로 작업하였습니다.
                 </p>
                 <br />
+                <h2>백엔드</h2>
                 <p>
                     백엔드의 경우 MVC2 패턴을 사용하여 클라이언트의
                     요청,응답처리 및 비즈니스 로직 처리부분을 모듈화 하여
@@ -411,11 +409,24 @@ export const ProjectDummy = [
                     통해 국외 정보도 지원 하였습니다.
                 </p>
                 <br />
+                <h2>소스 관리 Git</h2>
                 <p>
                     소스 관리 부분에선 Git을 사용 하여 관리하였으며, 당시엔
                     Git사용에 익숙하지 않아 각자의 Branch에서 작업을
                     진행하였습니다. 작업 완료 후 Main Branch에는 제가 직접
                     병합하는 식으로 작업을 진행했습니다.
+                </p>
+                <br />
+                <h2>프로젝트 진행중 생긴 문제</h2>
+                <h3>Jsoup을 이용한 크롤링 시간 문제</h3>
+                <p>
+                    공공데이터 항공API를 이용해 실제 항공편을 검색해 사용하던 중
+                    국제편을 지원하지않아 항공정보 포털에 실제 정보를 크롤링해
+                    해당 정보를 받아왔습니다. 그런데 항공편이 늘어날 수 록 로딩
+                    시간이 대략 10초 정도 걸리는 문제가 있엇습니다. 해당 문제를
+                    해결하기 위해 ThreadPool을 이용한 비동기 처리 방식을
+                    적용하였습니다. 로딩 시간은 대략 1초 이내로 줄인 경험이
+                    있습니다.
                 </p>
             </>
         ),
@@ -431,14 +442,43 @@ export const ProjectDummy = [
         ],
         name: "다이닝코드",
         date: "2021-09 ~ 2021-10",
-        img: [],
+        img: [
+            require("../src/assets/image/diningcode/1.png"),
+            require("../src/assets/image/diningcode/2.png"),
+            require("../src/assets/image/diningcode/3.png"),
+            require("../src/assets/image/diningcode/4.png"),
+            require("../src/assets/image/diningcode/5.png"),
+            require("../src/assets/image/diningcode/6.png"),
+            require("../src/assets/image/diningcode/7.png"),
+            require("../src/assets/image/diningcode/8.png"),
+            require("../src/assets/image/diningcode/9.png"),
+            require("../src/assets/image/diningcode/10.png"),
+            require("../src/assets/image/diningcode/11.png"),
+            require("../src/assets/image/diningcode/12.png"),
+            require("../src/assets/image/diningcode/13.png"),
+            require("../src/assets/image/diningcode/14.png"),
+            require("../src/assets/image/diningcode/15.png"),
+            require("../src/assets/image/diningcode/16.png"),
+            require("../src/assets/image/diningcode/17.png"),
+            require("../src/assets/image/diningcode/18.png"),
+            require("../src/assets/image/diningcode/19.png"),
+            require("../src/assets/image/diningcode/20.png"),
+        ],
         git: "",
         thumbnail: require("../src/assets/image/diningcode/thumbnail.png"),
         content:
-            "실제 서비스 중인 다이닝코드 리뉴얼 프로젝트에 참여했습니다. 제가 맡은 부분은 회원가입,로그인,피드 페이지 였습니다. 반응형 웹페이지 퍼블을 맡았으며 API 작업전 UI 부분 작업을 진행 하였습니다.",
-        worker: "",
+            "실제 서비스 중인 다이닝코드 리뉴얼 프로젝트에 참여한 경험이 있습니다. 저의 메인 작업은 회원가입, 로그인, 피드, 리뷰 페이지입니다. 반응형 웹페이지 퍼블을 맡았으며 API 작업전 UI 부분 작업을 진행 하였습니다.",
+        worker: "프론트 엔드 3명 / 백엔드의 경우 클라이언트쪽에서 작업 완료",
         type: "team",
-        skill: [],
+        skill: [
+            "Next.js",
+            "React",
+            "StoryBook",
+            "Es-Lint",
+            "Git",
+            "TypeScript",
+            "Styled-Components",
+        ],
         depscription: () => (
             <>
                 <h2>입사후 첫 프로젝트</h2>
@@ -451,18 +491,31 @@ export const ProjectDummy = [
                     배울 점 있는 팀원이 되었습니다.
                 </p>
                 <br />
-                <h2>Next.js</h2>
+                <h2>Next.js , Lighthouse</h2>
                 <p>
-                    검색엔진 최적화(SEO)를 위해 적용된 기술입니다. 다이닝코드는
-                    맛집 웹 사이트로써 다른 사이트보다 SEO에 중요도를 높게
-                    봐야했습니다. 기존 React의 경우 SPA로써 SEO 가 어려웠던 반면
-                    Next의 경우 Head 컴포넌트를 따로 지원해줘 각 페이지마다 SEO
-                    적용이 쉬웠습니다.
+                    Next.js의 경우 검색엔진 최적화(SEO)를 위해 적용된
+                    기술입니다. 다이닝코드는 맛집 웹 사이트로써 타 사이트보다
+                    SEO에 중요도를 높게 봐야했습니다. 기존 React의 경우 SPA로써
+                    SEO 가 어려웠던 반면 Next의 경우 Head 컴포넌트를 따로
+                    지원해줘 각 페이지마다 SEO 적용이 쉬웠습니다.
                 </p>
                 <br />
-                <h2>협업, 스토리북</h2>
                 <p>
-                    협업을 하면서 어려웠던 점이 여러가지 있엇습니다.
+                    Lighthouse 툴을 이용해 SEO,접근성,성능 등 웹 최적화 과정을
+                    진행하였고 처음엔 60점 밑으로 맴돌던 평균 점수를 90점 가량
+                    높인 경험이 있습니다. SEO에 중점을 둬 작업을 진행 하였고
+                    기존 실제 상용화된 서비스를 기준으로 접근성 또한 신경써서
+                    작업을 진행하였습니다. 성능 또한 기존의 경우 이미지 의
+                    크기를 신경쓰지 않고 작업해 1mb이상 나오는 부분을 해결하기
+                    위해 네이버 사이트를 참고해 하나의 이미지를 받아와 부분 부분
+                    잘라 사용하는 방식을 적용해 1mb 이상 나오던 용량을
+                    700kb이하로 낮춘 경험이 있습니다.
+                </p>
+                <br />
+                <h2>스토리북 도입 배경</h2>
+                <p>
+                    3명의 프론트엔드 개발자가 협업을 하면서 어려웠던 점이
+                    여러가지 있었습니다.
                     <br />
                     1. 작업을 진행하면서 컴포넌트는 늘어나는데 자신이 만든
                     컴포넌트 외에는 알 수 있는 부분이 없었습니다.
@@ -503,11 +556,22 @@ export const ProjectDummy = [
             "업무 시간외에 프론트 공부를 위해 참여한 프로젝트 입니다. 3SixTeen 홈페이지를 벤치마킹 하여 해당 사이트를 구현하였으며 Node.js 를 이용해 백엔드를 구현 해보았습니다.",
         worker: "",
         type: "team",
-        skill: [],
+        skill: [
+            "React",
+            "Next.js",
+            "TypeScript",
+            "Koa",
+            "Node.js",
+            "Styled-Components",
+            "Recoil",
+        ],
         depscription: () => (
             <>
                 <h2>사이드 프로젝트</h2>
-                <p>Next.js,TypeScript 공부 및 협업시</p>
+                <p>
+                    Next TypeScript 공부를 위해 하나의 쇼핑몰을 클론 코딩한
+                    프로젝트입니다.
+                </p>
                 <br />
 
                 <br />
@@ -536,11 +600,16 @@ export const ProjectDummy = [
             "아파트 사전 입주 어플로 입주 예약, 불만 사항 접수 기능이 존재하는 앱입니다. 프론트 엔드를 맡았고 React-Native를 사용하여 IOS,ANDROID 두 플랫폼을 지원했습니다. 파이어베이스 다이나믹 링크를 통해 앱이 켜지도록 설정하였고, 푸시 알람, 알림 톡을 통해 고객 편의,친화적인 앱을 만들었습니다.",
         worker: "",
         type: "team",
-        skill: [],
+        skill: [
+            "React-Native",
+            "FCM",
+            "카카오알림톡",
+            "Dynamic-Links",
+            "Recoil",
+            "React-Native/AsyncStorage",
+        ],
         depscription: () => (
             <>
-                <p></p>
-                <br />
                 <h2>React-Native</h2>
                 <p>
                     첫 React-Native 프로젝트여서 많은 시간을 공식문서와 구글링에
@@ -562,12 +631,14 @@ export const ProjectDummy = [
                     이용해 각 아파트별로 접근 가능하도록 구현하였습니다.
                 </p>
                 <br />
-                <h2>협업</h2>
+                <h2>Recoil</h2>
                 <p>
-                    백엔드와 첫 협업을 한 프로젝트입니다. 소통을 하면서
-                    커뮤니케이션 능력이 얼마나 중요한지 깨닳게 되는 프로젝트
-                    였습니다. Git, PostMan을 통해 소스 관리 및 API 관리를
-                    하였습니다.
+                    리코일을 이용해 전역상태관리를 해보았습니다. useState 처럼
+                    간단히 이용 가능하다는 장점이 있지만, 별도의 Action 없이
+                    변경이 가능하기에 어느 시점에서 사이드 이펙이 일어나는지
+                    찾기가 어려웠습니다. Selector 를 이용해 전역 상태의 여러값을
+                    가공해 사용이 가능해 기존 리덕스 소스에 비해 많이 부분에서
+                    줄었습니다.
                 </p>
             </>
         ),
@@ -589,7 +660,16 @@ export const ProjectDummy = [
             "자전거 정비 및 정비샵 업데이트가 가능한 앱입니다.프론트 엔드 2, 백엔드 1명으로 팀 프로젝트를 진행하였습니다. 프론트에서 전체적인 틀 작업은 제가 진행하였고 팀원과 분업하여 프로젝트 진행을 이끌었습니다.",
         worker: "",
         type: "team",
-        skill: [],
+        skill: [
+            "React-Native",
+            "FCM",
+            "카카오알림톡",
+            "Dynamic-Links",
+            "GoogleAppStore",
+            "Redux-Toolkit",
+            "본인인증 모듈",
+            "SNS로그인-카카오,네이버,구글,IOS",
+        ],
         depscription: () => (
             <>
                 <h2>React-Native</h2>
@@ -603,35 +683,52 @@ export const ProjectDummy = [
                     새로 업데이트가 되는 점을 확인하여 해당 부분을
                     useMemo,useCallBack 함수를 통해 메모이제이션을 통해 불필요한
                     속성 업데이트를 제거했습니다.
+                    <br /> React-Native 성능 최적화 관련 글을 읽고 적용하여 눈에
+                    보일정도로 최적화를 진행한 경험이 있습니다.
                 </p>
                 <br />
-                <h2>FCM , Google 앱스토어 기능 </h2>
+                <h2>FCM , Google 앱스토어 기능</h2>
                 <p>
                     알람 메시지,데이터 메시지, 다이나믹 링크, 알림톡 기능을
                     사용하였습니다.
                     <br />
                     1. 알림톡의 경우 하단에 버튼을 통해 앱에 접근이
                     가능하였는데, 해당 버튼을 클릭시 다이나믹 링크를 통해 앱에
-                    접근 가능하도록 하였습니다.
+                    접근 가능하도록 하였으며, 로그인이 필요 한 기능에 접근 할
+                    경우 자동 로그인을 거쳐 해당 프로세스로 이동 가능하게
+                    작업했습니다.
                     <br />
                     2. 데이터 메시지의 경우 페달체크 관리자가 정비소 관리자 권한
-                    허용 박탈을 할 경우 전송하여 앱이 켜져있더라도 바로 적용
-                    되도록 하였습니다.
+                    허용 박탈을 할 경우 바로 로그아웃 처리 및 권한 제어가
+                    가능하도록 작업했습니다.
                     <br />
                     3. 구글 비정상 종료 및 로그 기능을 활용해 앱 사용자가 잘못된
                     접근 경로 혹은 앱의 비정상 종료에 대한 로그를 확인하여 해당
                     이슈를 제거하였습니다.
+                    <br /> 대표적으로 앱을 장시간 백그라운드 상태로 켜둔뒤 다시
+                    접근할 경우 앱이 비정상 종료되는 현상이 있엇습니다. 해당
+                    이슈에 대해 구글링을 해보았고 React-Native 공식 Git 이슈
+                    사항에 해당 내용을 확인하여 고친 경험이 있습니다.
                 </p>
                 <br />
                 <h2>Redux-Toolkit</h2>
                 <p>
                     기존 Redux의 경우 작은 기능을 추가하더라도 많은 코드량을
                     작성하는 문제점이 있엇습니다. 해당 문제를 해결하기 위해 나온
-                    Redux-Toolkit을 사용하였습니다.
+                    Redux-Toolkit을 사용하였습니다. 공식 문서를 통해 공부를
+                    하였고, 기존 Redux에 비해 짧은 소스량 및 간단한 설정으로
+                    프론트를 같이 진행한 팀원 또한 금방 적응할 수 있엇습니다.
                 </p>
                 <br />
-                <h2>협업</h2>
-                <p>Git, PostMan을 통해 소스 관리 및 API 관리를 하였습니다.</p>
+                <h2>Version 관리</h2>
+                <p>
+                    프로젝트가 상용화 되고 500~1000여명의 고객이 실사용
+                    하였습니다. 운영중 IOS 관련 버그 및 클라이언트의 추가
+                    기능으로 버전 관리를 진행 한적이 있습니다. 프로젝트 주 이용
+                    고객이 중 장년층 이여서 앱 업데이트 진행이 어려움을
+                    겪고있어, 서버에서 버전을 별도로 관리해 앱 사용자 최신화를
+                    위해 힘쓴 경험이 있습니다.
+                </p>
             </>
         ),
     },
@@ -650,10 +747,19 @@ export const ProjectDummy = [
         img: [],
         git: "",
         thumbnail: require("../src/assets/image/localapp/splash.png"),
-        content: "브라질 현지 중고 거래 서비스 앱을 만들었습니다. ",
+        content:
+            "브라질 현지 중고 거래 서비스 앱을 만들었습니다. i18n 라이브러리를 이용해 4개 국어를 지원하였습니다. 브라질 현지화를 위해 숫자 표기법, 지역 번호 표시방법, 지역 주소 표기 방식을 브라질 현지 방식으로 적용하였습니다. ",
         worker: "",
         type: "team",
-        skill: [],
+        skill: [
+            "React-Native",
+            "FCM",
+            "Google-Map-API",
+            "SendBird",
+            "TypeScript",
+            "Redux-Toolkit",
+            "i18n",
+        ],
         depscription: () => (
             <>
                 <h2>Google Maps API</h2>
@@ -667,9 +773,10 @@ export const ProjectDummy = [
                 <br />
                 <h2>채팅</h2>
                 <p>
-                    SendBird 라이브러리를 이용해 채팅을 구현했으며 사진공유,
-                    위치공유, 검색어 찾기 기능을 넣어 카카오톡과 유사하도록
-                    구현했습니다.
+                    SendBird 라이브러리를 이용해 채팅을 구현했습니다. 부드러운
+                    애니메이션 효과를 넣어 카카오톡과 유사하도록 구현 했으며,
+                    사진 공유, 현재 위치 공유를 넣어 중고 거래시 필요한 정보를
+                    주고 받을 수 있도록 했습니다.
                 </p>
                 <br />
                 <h2>TypeScript , Custom Hook</h2>
@@ -680,6 +787,22 @@ export const ProjectDummy = [
                     API 호출시 로딩 등 공통적인 상태를 관리하도록 하였으며,
                     타입스크립트를 통해 어떠한 데이터를 넣어줘야 하며 어떤
                     형태로 데이터가 리턴 되는지 타입을 지정했습니다.
+                </p>
+                <h2>다국어 지원, 폰트사이즈 지정, 알람 설정</h2>
+                <p>
+                    1. 4개 국어(한국,영어,브라질어(포르투갈어),스페인어)를
+                    지원하기 위해 i18n 라이브러리를 이용했습니다. 모든 언어셋은
+                    서버에 따로 저장 했으며, API를 통해 변경 가능하도록 변수화
+                    하여 데이터를 받았습니다.
+                </p>
+                <p>
+                    2. 모든 사용자의 폰트사이즈를 개별적으로 적용하기 위해 전역
+                    상태를 사용해 공통적으로 폰트 사이즈를 변경 가능하게
+                    했습니다.
+                </p>
+                <p>
+                    3. FCM 셋팅을 통해 개별적으로 원하는 알람 소리를 설정
+                    가능하게 하였고, 진동 여부도 별도로 설정 가능하게 했습니다.
                 </p>
             </>
         ),

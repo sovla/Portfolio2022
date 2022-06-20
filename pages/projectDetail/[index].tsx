@@ -32,15 +32,13 @@ const ProjectDetail = () => {
                     </div>
                 ))}
             </Carousel>
-            <h2>프로젝트 내용</h2>
+            <h1>프로젝트 내용</h1>
             {project.depscription()}
-            <h2>Technologies</h2>
-            <p>프로젝트를 진행하면서 참여한 코드 기술 및 기술</p>
+            <h1>Technologies</h1>
+            <p>프로젝트 적용 기술</p>
             <ul>
                 {project.skill.map((v, i) => (
-                    <li key={i}>
-                        <p>{v}</p>
-                    </li>
+                    <li key={i}>{v}</li>
                 ))}
             </ul>
         </Container>
@@ -62,6 +60,11 @@ const Container = styled.div`
     & > p {
         margin-bottom: 20px;
     }
+    p,
+    h2 {
+        line-height: 1.7;
+        word-break: keep-all;
+    }
     .renderItem {
         width: "100%";
         max-height: 600px;
@@ -69,6 +72,12 @@ const Container = styled.div`
         & * {
             max-height: 600px;
         }
+    }
+    li {
+        list-style: circle;
+        color: #999;
+        margin-left: 20px;
+        line-height: 1.5;
     }
 `;
 export default ProjectDetail;
