@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styled, { keyframes } from "styled-components";
+import LeftArrow, { RightArrow } from "../src/components/layout/Arrow";
 import Menu from "../src/components/layout/Menu";
 
 const boxFade = keyframes`
@@ -71,7 +72,6 @@ const Container = styled.div`
 const AboutMe = () => {
     return (
         <Container>
-            <Menu />
             <div className="career">
                 <Image
                     alt="faceImage"
@@ -127,6 +127,8 @@ const AboutMe = () => {
                 </p>
             </div>
             <div className=""></div>
+            <LeftArrow menu="intro" />
+            <RightArrow menu="project" />
         </Container>
     );
 };

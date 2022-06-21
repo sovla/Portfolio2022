@@ -161,6 +161,7 @@ p {
     color: #999;
     font-family: OpenSans-Regular, Tahoma, Arial, sans-serif;
     line-height: 1.2;
+    font-size: 16px;
 }
 h3 {
     color: #cacaca;
@@ -178,4 +179,11 @@ h3 {
 }
 ::-webkit-scrollbar-thumb {
     background-color: #999;
+}
+
+b {
+    font-weight: bold;
+}
+.white {
+    color: #cacaca;
 }

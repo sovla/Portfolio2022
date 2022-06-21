@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import LeftArrow from "../src/components/layout/Arrow";
 import Menu from "../src/components/layout/Menu";
 
 const Container = styled.div`
@@ -83,6 +84,7 @@ const contact = () => {
                     <p>부산 광역시 부산진구 양정</p>
                 </div>
             </BoxDiv>
+            <LeftArrow menu="project" />
         </Container>
     );
 };

@@ -5,11 +5,18 @@ import { ProjectDummy } from "../project";
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import Zoom from "react-medium-image-zoom";
+import LeftArrow, { RightArrow } from "../../src/components/layout/Arrow";
 
 const ProjectDetail = () => {
     const [selectItem, setSelectItem] = useState<number>(-1);
+    const [isAutoPlay, setIsAutoPlay] = useState<boolean>(true);
     const router = useRouter();
+
+    const onClickItem = useCallback((index: number, item: React.ReactNode) => {
+        setSelectItem(index);
+        setIsAutoPlay(false);
+    }, []);
+
     const { index } = router.query;
 
     if (index == null) {
@@ -17,10 +24,6 @@ const ProjectDetail = () => {
     }
 
     const project = ProjectDummy[+index];
-
-    const onClickItem = useCallback((index: number, item: React.ReactNode) => {
-        setSelectItem(index);
-    }, []);
 
     return (
         <Container>
@@ -39,6 +42,7 @@ const ProjectDetail = () => {
                             alt="selectImage"
                             objectFit="contain"
                             layout="fill"
+                            loading="lazy"
                         />
                     </div>
                 </div>
@@ -48,11 +52,12 @@ const ProjectDetail = () => {
             <Carousel
                 className="carousel"
                 onClickItem={onClickItem}
-                autoPlay
+                autoPlay={isAutoPlay}
                 emulateTouch
                 infiniteLoop
                 stopOnHover
                 swipeable
+                showArrows={true}
             >
                 {project.img.map((v, i) => (
                     <div className="renderItem" key={i}>
@@ -61,6 +66,7 @@ const ProjectDetail = () => {
                             src={v}
                             alt="ProjectImage"
                             layout="responsive"
+                            loading="lazy"
                         />
                     </div>
                 ))}
@@ -68,13 +74,15 @@ const ProjectDetail = () => {
 
             <h1>프로젝트 내용</h1>
             {project.depscription()}
-            <h1>Technologies</h1>
+            {/* <h1>Technologies</h1>
             <p>프로젝트 적용 기술</p>
             <ul>
                 {project.skill.map((v, i) => (
                     <li key={i}>{v}</li>
                 ))}
-            </ul>
+            </ul> */}
+            <LeftArrow menu="project" />
+            <RightArrow menu="contact" />
         </Container>
     );
 };
@@ -85,6 +93,11 @@ const Container = styled.div`
     padding: 100px 25%;
     min-height: 100vh;
     position: relative;
+    .back {
+        position: absolute;
+        top: 5vh;
+        left: 10vw;
+    }
     .carousel {
         cursor: zoom-in;
     }
@@ -119,14 +132,14 @@ const Container = styled.div`
     }
     .modal {
         position: fixed;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         overflow-y: scroll;
         left: 0vw;
         top: 0vh;
         z-index: 100;
         padding: 5vh 10vw;
-        background-color: #0005;
+        background-color: #0009;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -151,6 +164,7 @@ const Container = styled.div`
         }
         img {
             cursor: zoom-out;
+            transform: scale(1);
         }
         div {
             position: relative;

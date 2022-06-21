@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
+import LeftArrow, { RightArrow } from "../src/components/layout/Arrow";
 import Menu from "../src/components/layout/Menu";
 
 const Main = styled.div`
@@ -240,7 +241,6 @@ const project = () => {
 
     return (
         <Main>
-            <Menu />
             <Box>
                 <h1>Web App FrontEnd Developer Portfolio</h1>
 
@@ -300,6 +300,8 @@ const project = () => {
                     })}
                 </ProjectDiv>
             </Box>
+            <LeftArrow menu="aboutme" />
+            <RightArrow menu="contact" />
         </Main>
     );
 };
@@ -383,6 +385,17 @@ export const ProjectDummy = [
         ],
         depscription: () => (
             <>
+                <h2>주요 기능</h2>
+                <p>
+                    회원가입, 로그인, 항공기 예매 서비스, 메일링, 실시간 채팅
+                    상담 서비스, 문의 게시판 기능이 존재합니다.
+                    <br />
+                    프론트 기술 - 부트스트랩4, JSP, HTML, CSS
+                    <br />
+                    백엔드 기술 - 자바 MVC2, MySQL, 공공 빅데이터 API, Jsoup,
+                    JavaThreadPool, SMTP
+                </p>
+                <br />
                 <h2>팀 프로젝트</h2>
                 <p>
                     5명의 팀원과 같이 협업을 하며 팀 프로젝트를 진행하는 부분에
@@ -567,14 +580,12 @@ export const ProjectDummy = [
         ],
         depscription: () => (
             <>
-                <h2>기능</h2>
+                <h2>주요기능</h2>
                 <p>
                     로그인, 회원가입, 상품 구매, 장바구니, 가결제 시스템으로
                     구성되어있습니다.
-                    <br /> 프론트의 경우 Next, TypeScript, React 를 이용해
-                    만들었습니다.
-                    <br /> 백엔드의 경우 Node, Koa 프레임워크, MySQL을 이용해
-                    만들었습니다.
+                    <br /> 프론트 기술 - Next, TypeScript, React
+                    <br /> 백엔드 기술 - Node, Koa 프레임워크, MySQL
                 </p>
                 <h2>사이드 프로젝트를 한 이유</h2>
                 <p>
@@ -629,6 +640,14 @@ export const ProjectDummy = [
         ],
         depscription: () => (
             <>
+                <h2>주요기능</h2>
+                <p>
+                    로그인, 사전 입주 예약, 이사 예약, 불만 사항 접수, 불만 사항
+                    오프라인 저장, QR코드 다이나믹링크 기능으로
+                    구성되어있습니다.
+                    <br /> 프론트 기술 - React-Native, Recoil
+                </p>
+                <br />
                 <h2>React-Native</h2>
                 <p>
                     첫 React-Native 프로젝트여서 많은 시간을 공식문서와 구글링에
@@ -672,7 +691,42 @@ export const ProjectDummy = [
         ],
         name: "PEDALCHECK",
         date: "2021-11 ~ 2020-04",
-        img: [],
+        img: [
+            require("../src/assets/image/pedalcheck/홈화면.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-회원가입.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-본인인증.jpg"),
+            require("../src/assets/image/pedalcheck/정비소 메인.jpg"),
+            require("../src/assets/image/pedalcheck/정비소 지역 찾기.jpg"),
+            require("../src/assets/image/pedalcheck/정비소홈.jpg"),
+            require("../src/assets/image/pedalcheck/정비소 상품.jpg"),
+            require("../src/assets/image/pedalcheck/정비소 리뷰.jpg"),
+            require("../src/assets/image/pedalcheck/내자전거.jpg"),
+            require("../src/assets/image/pedalcheck/피드.jpg"),
+            require("../src/assets/image/pedalcheck/더보기홈.jpg"),
+            require("../src/assets/image/pedalcheck/더보기.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소-정보기입.jpg"),
+            require("../src/assets/image/pedalcheck/쿠폰관리-사용자.jpg"),
+            require("../src/assets/image/pedalcheck/쿠폰사용관리.jpg"),
+            require("../src/assets/image/pedalcheck/정비이력.jpg"),
+            require("../src/assets/image/pedalcheck/정비상품관리.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소-정비상품등록.png"),
+            require("../src/assets/image/pedalcheck/쿠폰관리리스트.jpg"),
+            require("../src/assets/image/pedalcheck/쿠폰관리.jpg"),
+            require("../src/assets/image/pedalcheck/출고내역.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-고객.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-고객상세.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소-예약관리.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크 예약관리.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크 예약관리 (2).jpg"),
+            require("../src/assets/image/pedalcheck/페달체크 예약관리 (3).jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-쿠폰정비내역전체.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-예약시간관리.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소-예약시간관리.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소관리.png"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소-정비내역.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소-리뷰.jpg"),
+            require("../src/assets/image/pedalcheck/페달체크-정비소-1대1문의.jpg"),
+        ],
         git: "",
         thumbnail: require("../src/assets/image/pedalcheck/splash.png"),
         content:
@@ -691,6 +745,23 @@ export const ProjectDummy = [
         ],
         depscription: () => (
             <>
+                <h2>주요기능</h2>
+                <p>
+                    일반 사용자와 정비소 매장 관리자 두 그룹의 기능이 공동으로
+                    존재합니다.
+                    <br /> <b className="white">일반 사용자</b> -
+                    회원가입(본인인증), 로그인(SNS로그인만 지원), 자전거 정비
+                    예약, 쿠폰 예약, 리뷰 작성, 문의 작성, 피드, 내 자전거 추가,
+                    정비이력, 쿠폰 사용 관리, 내 정보 관리, 알람 설정
+                    <br />
+                    <b className="white">매장 관리자</b> - 매장 관리, 정비 상품
+                    관리, 고객 쿠폰 관리, 고객 관리, 출고 이력 관리, 정비소
+                    예약시간 별도 설정, 예약 관리, 리뷰 관리, 1:1문의 관리, 알람
+                    기능, 내 매장 정비이력 관리, 내 매장 통계, 정산 관리
+                    <br /> <b className="white">프론트 기술</b> - React-Native,
+                    Redux-Toolkit, FCM, Google-Maps
+                </p>
+                <br />
                 <h2>React-Native</h2>
                 <p>
                     React-Native 기능에 대해 심화적으로 들어간 프로젝트입니다.
@@ -781,6 +852,19 @@ export const ProjectDummy = [
         ],
         depscription: () => (
             <>
+                <h2>주요기능</h2>
+                <p>
+                    <b className="white">일반 사용자</b> - 회원가입(브라질
+                    문자인증), 로그인, 물건 검색, 중고 물품 등록, 중고 물품
+                    판매/구매, 채팅 기능, 비즈니스 회원 변경(전문 판매자), 배너
+                    관리, 다국어 지원, 개별 알람 설정, 관심 키워드 알람기능,
+                    판매상품 관리, 관심 카테고리 설정 기능
+                    <br />
+                    <b className="white">프론트 기술</b> - React-Native,
+                    TypeScript, Redux-Toolkit, Google-Maps-Api, FCM
+                    ,Send-Bird(채팅), i18n(다국어 지원)
+                </p>
+                <br />
                 <h2>Google Maps API</h2>
                 <p>
                     해당 API를 이용해 현재 위치 및 위치별 주소 나타내기, 위치

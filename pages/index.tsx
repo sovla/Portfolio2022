@@ -2,10 +2,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import Menu from "../src/components/layout/Menu";
-import styles from "../styles/Home.module.css";
 
 const boxSize = keyframes`
     0%{
@@ -100,7 +98,6 @@ const Home: NextPage = () => {
     }, []);
     return (
         <Container>
-            <Menu />
             <Head>
                 <title></title>
                 <meta
