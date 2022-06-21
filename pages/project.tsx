@@ -553,7 +553,7 @@ export const ProjectDummy = [
         git: "",
         thumbnail: require("../src/assets/image/3sixteen/thumbnail.png"),
         content:
-            "업무 시간외에 프론트 공부를 위해 참여한 프로젝트 입니다. 3SixTeen 홈페이지를 벤치마킹 하여 해당 사이트를 구현하였으며 Node.js 를 이용해 백엔드를 구현 해보았습니다.",
+            "업무 시간외에 프론트 엔드 공부를 위해 참여한 프로젝트 입니다. 3SixTeen 홈페이지를 벤치마킹 하여 해당 사이트를 구현하였으며 Node.js 를 이용해 백엔드를 구현 해보았습니다.",
         worker: "",
         type: "team",
         skill: [
@@ -567,12 +567,31 @@ export const ProjectDummy = [
         ],
         depscription: () => (
             <>
-                <h2>사이드 프로젝트</h2>
+                <h2>기능</h2>
                 <p>
-                    Next TypeScript 공부를 위해 하나의 쇼핑몰을 클론 코딩한
-                    프로젝트입니다.
+                    로그인, 회원가입, 상품 구매, 장바구니, 가결제 시스템으로
+                    구성되어있습니다.
+                    <br /> 프론트의 경우 Next, TypeScript, React 를 이용해
+                    만들었습니다.
+                    <br /> 백엔드의 경우 Node, Koa 프레임워크, MySQL을 이용해
+                    만들었습니다.
+                </p>
+                <h2>사이드 프로젝트를 한 이유</h2>
+                <p>
+                    회사 프로젝트를 진행하며 Next TypeScript Styled-Component
+                    StoryBook 에 대한 깊은 이해도가 필요해 해당 프로젝트를 통해
+                    진행했습니다. 부족한점을 채울 수 있는 시간이 되었고, 온라인
+                    소통을 통해 커뮤니케이션 능력또한 높일 수 있는 기회가
+                    되었습니다.
                 </p>
                 <br />
+                <h2>소통 방식</h2>
+                <p>
+                    주 1회 프로젝트 진행 확인을 위해 Notion과 Slack을 이용해
+                    회의록 작성 및 WBS 작성에 힘썻습니다. 모르는 내용의 경우
+                    Slack을 통해 공유하였고 그 내용을 바탕으로 노션에 정리해 다
+                    같이 공부하는 방식으로 진행했습니다.
+                </p>
 
                 <br />
             </>
