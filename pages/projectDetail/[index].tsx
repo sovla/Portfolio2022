@@ -5,7 +5,7 @@ import { ProjectDummy } from "../project";
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import LeftArrow, { RightArrow } from "../../src/components/layout/Arrow";
+import LeftArrow from "../../src/components/layout/Arrow";
 
 const ProjectDetail = () => {
     const [selectItem, setSelectItem] = useState<number>(-1);
@@ -49,6 +49,7 @@ const ProjectDetail = () => {
             )}
             <h1>{project.name}</h1>
             <p>{project.content}</p>
+
             <Carousel
                 className="carousel"
                 onClickItem={onClickItem}
@@ -82,7 +83,6 @@ const ProjectDetail = () => {
                 ))}
             </ul> */}
             <LeftArrow menu="project" />
-            <RightArrow menu="contact" />
         </Container>
     );
 };
