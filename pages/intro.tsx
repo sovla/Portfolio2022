@@ -93,7 +93,7 @@ const Home: NextPage = () => {
     const ref = useRef<HTMLVideoElement>(null);
     useEffect(() => {
         setTimeout(() => {
-            router.push("./aboutme");
+            router.push("/aboutme");
         }, 3000);
     }, []);
     return (
@@ -113,7 +113,14 @@ const Home: NextPage = () => {
                 </div>
                 <div className="bottom_black"></div>
                 <video autoPlay ref={ref} muted loop>
-                    <source src="/intro/intro.mp4" type="video/mp4" />
+                    <source
+                        src={
+                            process.env.NODE_ENV === "production"
+                                ? "https://sovla.github.io/portfolio2022/intro/intro.mp4"
+                                : "https://sovla.github.io/portfolio2022/intro/intro.mp4"
+                        }
+                        type="video/mp4"
+                    />
                 </video>
             </div>
         </Container>
