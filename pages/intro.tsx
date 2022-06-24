@@ -109,15 +109,15 @@ const Home: NextPage = () => {
             <div className="main">
                 <div className="top_black"></div>
                 <div className="main_text">
-                    <h2>열정적인 개발자 김준한 입니다.</h2>
+                    <h2>열정적인 개발자 Gavri 입니다.</h2>
                 </div>
                 <div className="bottom_black"></div>
                 <video autoPlay ref={ref} muted loop>
                     <source
                         src={
                             process.env.NODE_ENV === "production"
-                                ? "https://sovla.github.io/portfolio2022/intro/intro.mp4"
-                                : "https://sovla.github.io/portfolio2022/intro/intro.mp4"
+                                ? "https://sovla.github.io/Portfolio2022/intro/intro.mp4"
+                                : "https://sovla.github.io/Portfolio2022/intro/intro.mp4"
                         }
                         type="video/mp4"
                     />

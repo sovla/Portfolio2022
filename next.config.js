@@ -6,7 +6,7 @@ const optimizedImages = require("next-optimized-images");
 module.exports = {
     assetPrefix:
         process.env.NODE_ENV === "production"
-            ? "https://sovla.github.io/portfolio2022"
+            ? "https://sovla.github.io/Portfolio2022"
             : "",
     images: {
         loader: "akamai",
