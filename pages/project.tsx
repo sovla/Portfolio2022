@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import styled, { css } from "styled-components";
 import LeftArrow, { RightArrow } from "../src/components/layout/Arrow";
+import FooterMenu from "../src/components/layout/FooterMenu";
 import Menu from "../src/components/layout/Menu";
 
 const Main = styled.div`
@@ -18,6 +19,9 @@ const Box = styled.div`
         color: #cacaca;
         font-size: 30px;
         margin-bottom: 30px;
+    }
+    .simple {
+        margin-top: 50px;
     }
 `;
 
@@ -216,9 +220,64 @@ const ProjectDiv = styled.div`
     }
 `;
 
+const SimpleProjectDiv = styled.div`
+    margin-bottom: 40px;
+    display: flex;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+    .image {
+        width: 400px;
+        height: 300px;
+    }
+    .content {
+        width: calc(100% - 420px);
+        margin-left: 20px;
+        padding-top: 20px;
+        height: 300px;
+        & > h1 {
+            padding-bottom: 25px;
+        }
+        h3,
+        p {
+            line-height: 1.5;
+        }
+    }
+    .github {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        border-radius: 4px;
+        &:hover {
+            background-color: #fff3;
+        }
+    }
+    @media (max-width: 1200px) {
+        flex-direction: column;
+        justify-content: center;
+        .content {
+            width: 100%;
+        }
+    }
+    @media (max-width: 600px) {
+        height: fit-content;
+        .image {
+            width: 100%;
+            height: 225px;
+        }
+        .content {
+            height: fit-content;
+        }
+    }
+`;
+
 const project = () => {
     const router = useRouter();
     const [selectTagList, setSelectTagList] = useState<string[]>(["SHOW ALL"]);
+    const [isSimple, setIsSimple] = useState<boolean>(true);
 
     const tagList = useMemo(() => {
         let result: string[] = ["SHOW ALL"];
@@ -262,6 +321,11 @@ const project = () => {
         [router]
     );
 
+    const onClickGit = useCallback((path: string, event: React.MouseEvent) => {
+        event.stopPropagation();
+        window.open(path);
+    }, []);
+
     const reverseProjectDummy = [...ProjectDummy].reverse();
 
     return (
@@ -289,58 +353,113 @@ const project = () => {
                         </TagItem>
                     ))}
                 </Tag>
-                <ProjectDiv>
-                    {reverseProjectDummy.map((v, i) => {
-                        if (
-                            !selectTagList.find((findValue) =>
-                                v.tag.includes(findValue)
-                            ) &&
-                            !selectTagList.includes("SHOW ALL")
-                        ) {
-                            return null;
-                        }
-                        return (
-                            <div
-                                key={v.name}
-                                className="projectItem"
-                                onClick={() =>
-                                    onClickProjectItem(
-                                        reverseProjectDummy.length - 1 - i
-                                    )
-                                }
-                            >
-                                <div className="projectText">
-                                    <h1>{v.name}</h1>
-                                </div>
-                                <div className="projectImg">
-                                    <Image
-                                        style={{
-                                            maxHeight: "360px",
-                                        }}
-                                        objectFit="cover"
-                                        src={v.thumbnail}
-                                        alt="projectThumbnail"
-                                        layout="fill"
-                                    />
-                                </div>
-                                <div className="projectDim">
-                                    {v.tag.map((_innerValue, _index) => (
-                                        <p key={_index}>{_innerValue}</p>
-                                    ))}
-                                </div>
-                                <div className="service">
-                                    <div
-                                        style={{
-                                            backgroundColor: v.colorCode,
-                                        }}
-                                    >
-                                        <p>{v.service}</p>
+                {!isSimple && (
+                    <ProjectDiv>
+                        {reverseProjectDummy.map((v, i) => {
+                            if (
+                                !selectTagList.find((findValue) =>
+                                    v.tag.includes(findValue)
+                                ) &&
+                                !selectTagList.includes("SHOW ALL")
+                            ) {
+                                return null;
+                            }
+                            return (
+                                <div
+                                    key={v.name}
+                                    className="projectItem"
+                                    onClick={() =>
+                                        onClickProjectItem(
+                                            reverseProjectDummy.length - 1 - i
+                                        )
+                                    }
+                                >
+                                    <div className="projectText">
+                                        <h1>{v.name}</h1>
+                                    </div>
+                                    <div className="projectImg">
+                                        <Image
+                                            style={{
+                                                maxHeight: "360px",
+                                            }}
+                                            objectFit="cover"
+                                            src={v.thumbnail}
+                                            alt="projectThumbnail"
+                                            layout="fill"
+                                        />
+                                    </div>
+                                    <div className="projectDim">
+                                        {v.tag.map((_innerValue, _index) => (
+                                            <p key={_index}>{_innerValue}</p>
+                                        ))}
+                                    </div>
+                                    <div className="service">
+                                        <div
+                                            style={{
+                                                backgroundColor: v.colorCode,
+                                            }}
+                                        >
+                                            <p>{v.service}</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        );
-                    })}
-                </ProjectDiv>
+                            );
+                        })}
+                    </ProjectDiv>
+                )}
+                {isSimple && (
+                    <div className="simple">
+                        {reverseProjectDummy.map((v, i) => {
+                            if (
+                                !selectTagList.find((findValue) =>
+                                    v.tag.includes(findValue)
+                                ) &&
+                                !selectTagList.includes("SHOW ALL")
+                            ) {
+                                return null;
+                            }
+                            return (
+                                <SimpleProjectDiv
+                                    key={v.name}
+                                    onClick={() =>
+                                        onClickProjectItem(
+                                            reverseProjectDummy.length - 1 - i
+                                        )
+                                    }
+                                >
+                                    <div className="image">
+                                        <Image
+                                            width={400}
+                                            height={300}
+                                            objectFit="cover"
+                                            src={v.thumbnail}
+                                            alt="projectThumbnail"
+                                        />
+                                    </div>
+                                    <div className="content">
+                                        <h1>{v.name}</h1>
+                                        {v.simple()}
+                                    </div>
+                                    {v.git.length > 0 && (
+                                        <div
+                                            className="github"
+                                            onClickCapture={(event) =>
+                                                onClickGit(v.git, event)
+                                            }
+                                        >
+                                            <Image
+                                                width={40}
+                                                height={40}
+                                                src={require("../src/assets/image/github.png")}
+                                                alt="git"
+                                            />
+                                        </div>
+                                    )}
+                                </SimpleProjectDiv>
+                            );
+                        })}
+                    </div>
+                )}
             </Box>
             <LeftArrow menu="aboutme" />
             <RightArrow menu="contact" />
@@ -352,11 +471,26 @@ export default project;
 
 export const ProjectDummy = [
     {
-        tag: ["국비지원", "JSP", "TEAM-PROJECT", "MYSQL", "JAVA", "MVC2"],
+        tag: ["JSP", "MYSQL", "JAVA", "MVC2"],
         name: "WILL-PASS",
         date: "2020-06 ~ 2020-08",
         service: "WEB",
         colorCode: "#64CDF5",
+        simple: () => {
+            return (
+                <>
+                    <h3>주요기능</h3>
+                    <p>
+                        항공권 예매, 문의 게시판, 채팅형 고객센터, 예매 메일링
+                        시스템, 회원 정보 변경
+                    </p>
+                    <h3>Skill</h3>
+                    <p>JSP, BootStrap, JAVA, MySQL</p>
+                    <h3>배포</h3>
+                    <p>Cafe 24</p>
+                </>
+            );
+        },
         img: [
             require("../src/assets/image/willpass/슬라이드1.png"),
             require("../src/assets/image/willpass/슬라이드2.png"),
@@ -409,7 +543,7 @@ export const ProjectDummy = [
             require("../src/assets/image/willpass/슬라이드49.png"),
             require("../src/assets/image/willpass/슬라이드50.png"),
         ],
-        git: "",
+        git: "https://github.com/willpassteam/WILLPASS",
         thumbnail: require("../src/assets/image/willpass/WILLPASSThumbNail.png"),
         content:
             "WILL PASS는 실제 여행사 처럼 예매가 가능하도록 만든 가상의 웹사이트 입니다. MVC2 패턴을 적용하여 진행 하였으며, 주요 기능으론 회원 CRUD, 실제 항공편 기준 예매 서비스, 문의 게시판, 실시간 채팅 고객센터가 있습니다.",
@@ -489,14 +623,7 @@ export const ProjectDummy = [
         ),
     },
     {
-        tag: [
-            "REACT-JS",
-            "NEXT-JS",
-            "TYPESCRIPT",
-            "REDUX",
-            "Styled-Components",
-            "TEAM-PROJECT",
-        ],
+        tag: ["REACT", "NEXT", "TYPESCRIPT", "REDUX"],
         name: "다이닝코드",
         date: "2021-09 ~ 2021-10",
         service: "WEB",
@@ -529,6 +656,18 @@ export const ProjectDummy = [
             "실제 서비스 중인 다이닝코드 리뉴얼 프로젝트에 참여한 경험이 있습니다. 저의 메인 작업은 회원가입, 로그인, 피드, 리뷰 페이지입니다. 반응형 웹페이지 퍼블을 맡았으며 API 작업전 UI 부분 작업을 진행 하였습니다.",
         worker: "프론트 엔드 3명 / 백엔드의 경우 클라이언트쪽에서 작업 완료",
         type: "team",
+        simple: () => {
+            return (
+                <>
+                    <h3>주요기능</h3>
+                    <p>맛집 검색, 맛집 리뷰, 피드 관리</p>
+                    <h3>Skill</h3>
+                    <p>Next, TypeScript, Redux, Styled-Components</p>
+                    <h3>배포</h3>
+                    <p>AWS S3</p>
+                </>
+            );
+        },
         skill: [
             "Next.js",
             "React",
@@ -596,15 +735,7 @@ export const ProjectDummy = [
         ),
     },
     {
-        tag: [
-            "REACT-JS",
-            "TYPESCRIPT",
-            "RECOIL",
-            "Styled-Components",
-            "Node.js",
-            "Koa",
-            "TEAM-PROJECT",
-        ],
+        tag: ["REACT", "TYPESCRIPT", "RECOIL", "Node"],
         name: "3SixTeen Copy",
         service: "WEB",
         colorCode: "#C6AF96",
@@ -619,8 +750,21 @@ export const ProjectDummy = [
             require("../src/assets/image/3sixteen/5.png"),
             require("../src/assets/image/3sixteen/6.png"),
         ],
-        git: "",
+        git: "https://github.com/ReactPortfolioTeam/shoppingMall-react-project",
         thumbnail: require("../src/assets/image/3sixteen/thumbnail.png"),
+
+        simple: () => {
+            return (
+                <>
+                    <h3>주요기능</h3>
+                    <p>물건 구매, 장바구니, 물건 검색</p>
+                    <h3>Skill</h3>
+                    <p>React, Recoil, TypeScript</p>
+                    <h3>배포</h3>
+                    <p>Heroku</p>
+                </>
+            );
+        },
         content:
             "업무 시간외에 프론트 엔드 공부를 위해 참여한 프로젝트 입니다. 3SixTeen 홈페이지를 벤치마킹 하여 해당 사이트를 구현하였으며 Node.js 를 이용해 백엔드를 구현 해보았습니다.",
         worker: "",
@@ -666,7 +810,7 @@ export const ProjectDummy = [
         ),
     },
     {
-        tag: ["REACT-JS", "RECOIL", "REACT-NATIVE", "FCM", "Dynamic-Link"],
+        tag: ["REACT", "RECOIL", "REACT-NATIVE"],
         name: "AEGAIN-A플래너",
         date: "2021-10 ~ 2021-11",
         service: "Mobile",
@@ -683,7 +827,7 @@ export const ProjectDummy = [
             require("../src/assets/image/aegain/reservation3.jpg"),
             require("../src/assets/image/aegain/reservation4.jpg"),
         ],
-        git: "",
+        git: "https://github.com/sovla/APlanner_ReactNative",
         thumbnail: require("../src/assets/image/aegain/splash.png"),
         content:
             "아파트 사전 입주 어플로 입주 예약, 불만 사항 접수 기능이 존재하는 앱입니다. 프론트 엔드를 맡았고 React-Native를 사용하여 IOS,ANDROID 두 플랫폼을 지원했습니다. 파이어베이스 다이나믹 링크를 통해 앱이 켜지도록 설정하였고, 푸시 알람, 알림 톡을 통해 고객 편의,친화적인 앱을 만들었습니다.",
@@ -697,6 +841,20 @@ export const ProjectDummy = [
             "Recoil",
             "React-Native/AsyncStorage",
         ],
+        simple: () => {
+            return (
+                <>
+                    <h3>주요기능</h3>
+                    <p>
+                        사전 입주 예약, 이사 예약, 불편 사항 접수, QR코드 인식
+                    </p>
+                    <h3>Skill</h3>
+                    <p>ReactNative, FCM, DynamicLink</p>
+                    <h3>배포</h3>
+                    <p>GoogleAppStore, AppleAppStore</p>
+                </>
+            );
+        },
         depscription: () => (
             <>
                 <h2>주요기능</h2>
@@ -741,13 +899,7 @@ export const ProjectDummy = [
         ),
     },
     {
-        tag: [
-            "REACT-JS",
-            "REACT-NATIVE",
-            "REDUX-TOOLKIT",
-            "FCM",
-            "Styled-Components",
-        ],
+        tag: ["REACT", "REACT-NATIVE", "REDUX-TOOLKIT"],
         name: "PEDALCHECK",
         service: "Mobile",
         colorCode: "#00B7FD",
@@ -792,6 +944,21 @@ export const ProjectDummy = [
         thumbnail: require("../src/assets/image/pedalcheck/splash.png"),
         content:
             "자전거 정비 및 정비샵 업데이트가 가능한 앱입니다.프론트 엔드 2, 백엔드 1명으로 팀 프로젝트를 진행하였습니다. 프론트에서 전체적인 틀 작업은 제가 진행하였고 팀원과 분업하여 프로젝트 진행을 이끌었습니다.",
+        simple: () => {
+            return (
+                <>
+                    <h3>주요기능</h3>
+                    <p>
+                        자전거 정비 예약, 자전거 등록, 정비소 관리 기능, 정비소
+                        통계 기능, 정산, 고객관리 시스템, 정비 예약 관리 시스템
+                    </p>
+                    <h3>Skill</h3>
+                    <p>ReactNative, FCM, DynamicLink, GoogleMap, WebView</p>
+                    <h3>배포</h3>
+                    <p>GoogleAppStore, AppleAppStore</p>
+                </>
+            );
+        },
         worker: "",
         type: "team",
         skill: [
@@ -884,15 +1051,7 @@ export const ProjectDummy = [
         ),
     },
     {
-        tag: [
-            "REACT-JS",
-            "REACT-NATIVE",
-            "TYPESCRIPT",
-            "GOOGLE-MAPS-API",
-            "REDUX-TOOLKIT",
-            "FCM",
-            "Send-Bird",
-        ],
+        tag: ["REACT", "REACT-NATIVE", "TYPESCRIPT", "REDUX-TOOLKIT"],
         name: "BRAZIL LOCAL APP",
         date: "2020-06 ~ 2020-08",
         service: "Mobile",
@@ -969,6 +1128,21 @@ export const ProjectDummy = [
             "Redux-Toolkit",
             "i18n",
         ],
+        simple: () => {
+            return (
+                <>
+                    <h3>주요기능</h3>
+                    <p>물건 관리, 물건 구매, 채팅, 다국어 지원</p>
+                    <h3>Skill</h3>
+                    <p>
+                        ReactNative,TypeScript, FCM, DynamicLink, GoogleMapsApi,
+                        Sendbird
+                    </p>
+                    <h3>배포</h3>
+                    <p>GoogleAppStore, AppleAppStore</p>
+                </>
+            );
+        },
         depscription: () => (
             <>
                 <h2>주요기능</h2>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import LeftArrow, { RightArrow } from "../src/components/layout/Arrow";
+import FooterMenu from "../src/components/layout/FooterMenu";
 import Menu from "../src/components/layout/Menu";
 
 const boxFade = keyframes`
@@ -71,7 +72,7 @@ const Container = styled.div`
 `;
 
 const AboutMe = () => {
-    const isPrivacy = true;
+    const isPrivacy = false;
     return (
         <Container>
             <Head>
@@ -145,6 +146,7 @@ const AboutMe = () => {
             <div className=""></div>
             <LeftArrow menu="intro" />
             <RightArrow menu="project" />
+            <FooterMenu />
         </Container>
     );
 };

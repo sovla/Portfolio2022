@@ -2,6 +2,7 @@ import Head from "next/head";
 import React from "react";
 import styled from "styled-components";
 import LeftArrow from "../src/components/layout/Arrow";
+import FooterMenu from "../src/components/layout/FooterMenu";
 import Menu from "../src/components/layout/Menu";
 
 const Container = styled.div`
@@ -95,6 +96,7 @@ const contact = () => {
                 </div>
             </BoxDiv>
             <LeftArrow menu="project" />
+            <FooterMenu />
         </Container>
     );
 };
